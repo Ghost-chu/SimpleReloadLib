@@ -3,8 +3,9 @@ Java 简易通用重载库。
 
 ## 前言
 SimpleReloadLib 曾是 [QuickShop-Reremake](https://github.com/PotatoCraft-Studio/QuickShop-Reremake) 的一部分。但我发现实在是太TM好用和灵活了，于是单独拿出来作为一个库使用。  
-除了 Bukkit, BungeeCord 插件，你甚至可以嵌入到任何需要重载配置文件的任意 Java 应用程序中。  
-在中型复杂架构的项目中，这会是一个非常有用的工具。
+除了 Bukkit 和 BungeeCord 插件，你甚至可以嵌入到任何需要重载配置文件的任意 Java 应用程序中。  
+在中型复杂架构的项目中，这会是一个非常有用的工具。  
+该库在 [QuickShop-Reremake](https://github.com/PotatoCraft-Studio/QuickShop-Reremake) 使用已近一年，我们没有发现任何严重错误，大概可以放心使用（。  
 
 ## 特点
 * 基于注册顺序的重载机制，无需担心重载顺序的问题。
