@@ -41,9 +41,9 @@ public class Example implements Reloadable {
 
 ```java
 // 按照注册顺序重载所有模块
-reloadManager.reload();
+Map<ReloadableContainer, ReloadResult> results = reloadManager.reload();
 // 按照注册顺序重载特定 class 的所有实例
-reloadManager.reload(Example.class);
+Map<ReloadableContainer, ReloadResult> results = reloadManager.reload(Example.class);
 ```
 
 ## 哪些内容可被注册到重载管理器
