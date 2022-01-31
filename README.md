@@ -12,7 +12,7 @@ SimpleReloadLib 曾是 [QuickShop-Reremake](https://github.com/PotatoCraft-Studi
 * 简单易用，只需无脑注册即可。
 * 轻量，只有 5 个 Java 文件，可以打包到项目中。
 * 弱引用存储，不会导致内存泄漏。
-* 支持对象、静态方法和Lambda
+* 支持对象和静态方法
 
 ## 如何使用
 
