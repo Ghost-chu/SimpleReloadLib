@@ -22,7 +22,7 @@ SimpleReloadLib 曾是 [QuickShop-Reremake](https://github.com/PotatoCraft-Studi
 ReloadManager reloadManager = new ReloadManager();
 ```
 
-2. 将需要重载配置文件的模块的 class 文件实现 Reloadable 接口，注册到重载管理器，并返回重载结果。当然，你也可以直接注册 lambda。
+2. 将需要重载配置文件的模块的 class 文件实现 Reloadable 接口，注册到重载管理器，并返回重载结果。
 
 ```java
 public class Example implements Reloadable {
@@ -51,7 +51,6 @@ Map<ReloadableContainer, ReloadResult> results = reloadManager.reload(Example.cl
 
 * 普通的实现了 Reloadable 接口的类
 * 任何无参返回 ReloadResult 的 Method （也就是支持静态调用）
-* 甚至是 lambda ！
 
 ## 针对性重载
 
