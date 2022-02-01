@@ -62,4 +62,4 @@ jobs:
        env:
          MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASS }}
-         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
