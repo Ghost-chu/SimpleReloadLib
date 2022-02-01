@@ -33,7 +33,16 @@ public class Example implements Reloadable {
     @Override
     public ReloadResult reloadModule() throws Exception {
         // Reload code here
-        return ReloadResult.builder().status(ReloadStatus.SUCCESS).build();
+        try{
+            // Reload code here
+             return ReloadResult.builder().status(ReloadStatus.SUCCESS).build();
+        } catch (IllegalStateException scheduleException) {
+              return ReloadResult.builder().status(ReloadStatus.SCHEDULED).reason("资源正被使用").build();
+        } catch (RuntimeException requireRestartException) {
+              return ReloadResult.builder().status(ReloadStatus.REQUIRE_RESTART).reason("开发者长得太丑，因此需要重新启动应用程序").build();
+        } catch (Exception otherException){
+              return ReloadResult.builder().status(ReloadStatus.EXCEPTION).exception(otherException).reason("什么玩意儿爆炸了草").build();
+        }
     }
 }
 ```
