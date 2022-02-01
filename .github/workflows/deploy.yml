@@ -55,7 +55,7 @@ jobs:
          server-username: ${{ secrets.OSSRH_USER }}
          server-password: ${{ secrets.OSSRH_PASSWORD }}
          gpg-private-key: ${{ secrets.GPG_SECRET }} # Value of the GPG private key to import
-         gpg-passphrase: ${{ secrets.GPS_PASSWORD }} # env variable for GPG private key passphrase
+         gpg-passphrase: ${{ secrets.GPG_PASSWORD }} # env variable for GPG private key passphrase
 
      - name: "Central Deploy"
        run: mvn -B -Possrh deploy --file pom.xml -DskipTests
