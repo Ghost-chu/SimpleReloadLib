@@ -61,4 +61,4 @@ jobs:
          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
 
      - name: "Central Deploy"
-       run: mvn -B -Possrh deploy --file pom.xml -DskipTests
+       run: mvn -B deploy --file pom.xml -DskipTests
