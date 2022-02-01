@@ -12,9 +12,9 @@
     </properties>
 
 
-    <groupId>com.ghostchu</groupId>
+    <groupId>com.github.ghostchu</groupId>
     <artifactId>simplereloadlib</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>SimpleReloadLib</name>
