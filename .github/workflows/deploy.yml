@@ -42,7 +42,6 @@ jobs:
  central-deploy:
    name: "Deploy Project (Central Repository)"
    runs-on: ubuntu-latest
-
    steps:
      - uses: actions/checkout@v2
      - name: "Set up JDK"
@@ -52,14 +51,14 @@ jobs:
          distribution: 'adopt'
          cache: maven
          server-id: ossrh
-         server-username: ${{ secrets.OSSRH_USER }}
-         server-password: ${{ secrets.OSSRH_PASSWORD }}
-         gpg-private-key: ${{ secrets.GPG_SECRET }} # Value of the GPG private key to import
-         gpg-passphrase: ${{ secrets.GPG_PASSWORD }} # env variable for GPG private key passphrase
-
-     - name: "Central Deploy"
-       run: mvn -B -Possrh deploy --file pom.xml -DskipTests
+         server-username: MAVEN_USERNAME
+         server-password: MAVEN_PASSWORD
+         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+         gpg-passphrase: MAVEN_GPG_PASSPHRASE
        env:
          MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASS }}
          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
+
+     - name: "Central Deploy"
+       run: mvn -B -Possrh deploy --file pom.xml -DskipTests
