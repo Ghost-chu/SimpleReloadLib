@@ -21,6 +21,16 @@
     <description>简单但是实用的通用重载库。</description>
     <url>https://github.com/Ghost-chu/SimpleReloadLib</url>
 
+    <developers>
+        <developer>
+            <id>Ghost_chu</id>
+            <name>Ghost chu</name>
+            <email>2908803755@qq.com</email>
+            <url>https://www.ghostchu.com</url>
+            <timezone>Asia/Shanghai</timezone>
+        </developer>
+    </developers>
+
     <scm>
         <connection>scm:git:git@github.com:Ghost-chu/SimpleReloadLib.git</connection>
         <developerConnection>scm:git:git@github.com:Ghost-chu/SimpleReloadLib.git</developerConnection>
