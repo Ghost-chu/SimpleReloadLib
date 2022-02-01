@@ -66,6 +66,19 @@ SimpleReloadLib 提供了以下几种结果可以返回：
 * SCHEDULED - 无法立即重载，但已经计划重载
 * EXCEPTION - 发生了异常 （Exception对象可在ReloadResult中拿到）
 
+## 引用
+SimpleReloadLib 现在在 Maven Central 可用。
+
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>com.ghostchu</groupId>
+            <artifactId>simplereloadlib</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+    </dependencies>
+```
+
 ## 协议
 
 此存储库中的代码使用 MIT 协议授权，原 QuickShop-Reremake 的 GPL 协议不在本存储库中适用。
