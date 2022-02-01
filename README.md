@@ -12,7 +12,7 @@ SimpleReloadLib 曾是 [QuickShop-Reremake](https://github.com/PotatoCraft-Studi
 * 简单易用，只需无脑注册即可。
 * 轻量，只有 5 个 Java 文件，可以打包到项目中。
 * 弱引用存储，不会导致内存泄漏。
-* 支持对象和静态方法
+* 支持对象和静态方法。
 
 ## 如何使用
 
@@ -59,7 +59,7 @@ Map<ReloadableContainer, ReloadResult> results = reloadManager.reload(Example.cl
 ## 哪些内容可被注册到重载管理器
 
 * 普通的实现了 Reloadable 接口的类
-* 任何无参返回 ReloadResult 的 Method （也就是支持静态调用）
+* 任何无参返回 ReloadResult 的静态 Method
 
 ## 针对性重载
 
