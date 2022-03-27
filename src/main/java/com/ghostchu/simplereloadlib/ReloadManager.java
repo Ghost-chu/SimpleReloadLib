@@ -113,50 +113,36 @@ public class ReloadManager {
         Map<ReloadableContainer, ReloadResult> reloadResultMap = new LinkedHashMap<>();
         Iterator<ReloadableContainer> iterator = this.registry.iterator();
         while (iterator.hasNext()) {
-            ReloadableContainer reloadable = iterator.next();
-            if (clazz != null) {
-                if (reloadable.getReloadable() != null) {
-                    Reloadable rable = reloadable.getReloadable().get();
-                    if (rable != null) {
-                        if (!clazz.equals(rable.getClass())) {
-                            continue;
-                        }
-                    } else {
-                        continue;
-                    }
-                }
-                if (reloadable.getReloadableMethod() != null) {
-                    Method method = reloadable.getReloadableMethod();
-                    if (method != null && !clazz.equals(method.getDeclaringClass())) {
-                        continue;
-                    }
-                }
+            ReloadableContainer reloadContainer = iterator.next();
+            Reloadable reloadable = null;
+            Method reloadMethod = null;
+            if (reloadContainer.getReloadable() != null)
+                reloadable = reloadContainer.getReloadable().get();
+            if (reloadContainer.getReloadableMethod() != null)
+                reloadMethod = reloadContainer.getReloadableMethod();
+            if (reloadable == null && reloadMethod == null) {
+                reloadResultMap.put(reloadContainer, new ReloadResult(ReloadStatus.OUTDATED, "Container object has been outdated", null));
+                iterator.remove();
+                continue;
             }
-            ReloadResult reloadResult;
+            ReloadResult reloadResult = new ReloadResult(ReloadStatus.EXCEPTION, "Incorrect reload object", null);
             try {
-                if (reloadable.getReloadable() != null) {
-                    Reloadable reloadObj = reloadable.getReloadable().get();
-                    if (reloadObj != null) {
-                        reloadResult = reloadObj.reloadModule();
-                    } else {
-                        iterator.remove();
-                        reloadResult = new ReloadResult(ReloadStatus.OUTDATED, "Object has been invalid", null);
+                if (reloadable != null) {
+                    if (clazz != null && !clazz.equals(reloadable.getClass())) {
+                        continue;
                     }
-                } else if (reloadable.getReloadableMethod() != null) {
-                    Method method = reloadable.getReloadableMethod();
-                    if (method != null) {
-                        reloadResult = (ReloadResult) method.invoke(null);
-                    } else {
-                        iterator.remove();
-                        reloadResult = new ReloadResult(ReloadStatus.OUTDATED, "Method has been invalid", null);
-                    }
-                } else {
-                    reloadResult = new ReloadResult(ReloadStatus.EXCEPTION, "Both reloadable and method not exists", null);
+                    reloadResult = reloadable.reloadModule();
                 }
-            } catch (Exception exception) {
-                reloadResult = new ReloadResult(ReloadStatus.EXCEPTION, "Reloading failed", exception);
+                if (reloadMethod != null) {
+                    if (clazz != null && !clazz.equals(reloadMethod.getDeclaringClass())) {
+                        continue;
+                    }
+                    reloadResult = (ReloadResult) reloadMethod.invoke(null);
+                }
+                reloadResultMap.put(reloadContainer, reloadResult);
+            } catch (Exception e) {
+                reloadResultMap.put(reloadContainer, new ReloadResult(ReloadStatus.EXCEPTION, "Reloading failed", e));
             }
-            reloadResultMap.put(reloadable, reloadResult);
         }
         return reloadResultMap;
     }
