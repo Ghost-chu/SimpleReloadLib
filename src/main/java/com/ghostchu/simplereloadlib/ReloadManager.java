@@ -111,9 +111,7 @@ public class ReloadManager {
     @NotNull
     public synchronized Map<ReloadableContainer, ReloadResult> reload(@Nullable Class<Reloadable> clazz) {
         Map<ReloadableContainer, ReloadResult> reloadResultMap = new LinkedHashMap<>();
-        Iterator<ReloadableContainer> iterator = this.registry.iterator();
-        while (iterator.hasNext()) {
-            ReloadableContainer reloadContainer = iterator.next();
+        for (ReloadableContainer reloadContainer : new ArrayList<>(this.registry)) {
             Reloadable reloadable = null;
             Method reloadMethod = null;
             if (reloadContainer.getReloadable() != null)
@@ -122,7 +120,7 @@ public class ReloadManager {
                 reloadMethod = reloadContainer.getReloadableMethod();
             if (reloadable == null && reloadMethod == null) {
                 reloadResultMap.put(reloadContainer, new ReloadResult(ReloadStatus.OUTDATED, "Container object has been outdated", null));
-                iterator.remove();
+                this.registry.remove(reloadContainer);
                 continue;
             }
             ReloadResult reloadResult = new ReloadResult(ReloadStatus.EXCEPTION, "Incorrect reload object", null);
