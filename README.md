@@ -83,4 +83,4 @@ We're in central.
 
 ## License
 
-MIT + 996.ICU mixed.
+MIT
