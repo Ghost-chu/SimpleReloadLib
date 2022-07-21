@@ -2,13 +2,13 @@
 Simple Java generic reload library.
 
 ## Introduce
-SimpleReloadLib used to be a part of QuickShop-Reremake. But it really easy to use and powerful, so I made it to a standalone lib.   
-You can insert to any Java project including Bukkit, Paper, BungeeCord, Forge, Fabric etc.  
-This lib already used in QuickShop-Reremake over 1 year and no errors found.
+SimpleReloadLib isvused to be a part of QuickShop-Reremake. But it is really easy to use and powerful, so I made it to a standalone lib.   
+You can insert this to any Java project including Bukkit, Paper, BungeeCord, Forge, Fabric etc.  
+This lib  is already used in QuickShop-Reremake over 1 year and no errors were found.
 
 ## Features
 * Reloading mechanism based on registration order, no need to worry about reload order。
-* Simple and easy to use, just need registration with eyes closed.
+* Simple and easy to use, just need to register with eyes closed.
 * Lightweight, powered by 5 java classes. You can package it into any project.
 * WeakReference to save your memory and prevent memory leaking.
 * Support both object and static method.
