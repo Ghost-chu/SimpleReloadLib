@@ -30,17 +30,17 @@ public class Example implements Reloadable {
     
     @Override
     public ReloadResult reloadModule() throws Exception {
-        // Reload code here
         try{
             // Reload code here
              return ReloadResult.builder().status(ReloadStatus.SUCCESS).build();
         } catch (IllegalStateException scheduleException) {
-              return ReloadResult.builder().status(ReloadStatus.SCHEDULED).reason("资源正被使用").build();
+              return ReloadResult.builder().status(ReloadStatus.SCHEDULED).reason("Resource in use").build();
         } catch (RuntimeException requireRestartException) {
-              return ReloadResult.builder().status(ReloadStatus.REQUIRE_RESTART).reason("开发者长得太丑，因此需要重新启动应用程序").build();
+              return ReloadResult.builder().status(ReloadStatus.REQUIRE_RESTART).reason("Restart required").build();
         } catch (Exception otherException){
-              return ReloadResult.builder().status(ReloadStatus.EXCEPTION).exception(otherException).reason("什么玩意儿爆炸了草").build();
+              return ReloadResult.builder().status(ReloadStatus.EXCEPTION).exception(otherException).reason("Unkown error raised").build();
         }
+        // If there have any Exception not be catched, Manager will catch it and report with ReloadStatus.EXCEPTION
     }
 }
 ```
